@@ -34,6 +34,8 @@ export default class MyDocument extends Document {
       <Html>
         <Head>
           <meta property="og:image" content={db.bg}/>
+          <meta property="og:title" content={db.title}/>
+          <meta property="og:description" content={db.description}/>
         </Head>
         <body>
           <Main />
