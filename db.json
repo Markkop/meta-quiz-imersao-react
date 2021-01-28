@@ -4,25 +4,27 @@
   "description": "Vamos ver se você prestou mesmo atenção na Imersão React v2",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/xUOxf3yDKCuwpOlT3i/giphy.gif",
+      "image": "https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif",
       "title": "Qual a cor do gato da Juliana?",
       "description": "Aquele que fez desfile durante a aula 1",
-      "answer": 2,
+      "answer": 1,
       "alternatives": [
-        ".elemento",
-        "*elemento",
-        "#elemento",
-        "%elemento"
+        "Marrom",
+        "Preto e branco",
+        "Cinza",
+        "Ele nunca apareceu na Imersão"
       ]
     },
     {
-      "image": "https://media.giphy.com/media/13FrpeVH09Zrb2/giphy.gif",
-      "title": "Como fazer um background gradiente com css?",
-      "description": "Faz tempo em haha",
-      "answer": 0,
+      "image": "https://media.giphy.com/media/443pAv9m6Ti8KiCoAi/giphy.gif",
+      "title": "O que aconteceu quando o Mario pediu o \"Zoom mágico da edição\" na Aula 2?",
+      "description": "O importante é ter uma equipe técnica sempre atenta",
+      "answer": 3,
       "alternatives": [
-         "background: linear-gradient(#e66465, #9198e5);",
-         "background: gradient(#e66465, #9198e5);"
+         "Apareceu uma lupa na área destacada",
+         "A tela aproximou para o ponto indicado",
+         "O Paulo pediu para aumentar a fonte",
+         "Nada"
       ]
     }
   ],
