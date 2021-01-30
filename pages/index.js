@@ -1,26 +1,45 @@
 import React from 'react'
 import Head from 'next/head'
 import db from '../db.json'
-import GitHubCorner from '../src/components/molecules/GitHubCorner'
-import Widget from '../src/components/organisms/Widget'
-import Footer from '../src/components/organisms/Footer'
-import Quiz from '../src/components/organisms/Quiz'
 
-export default function Home () {
+import GitHubCorner from '../src/components/atoms/GitHubCorner'
+import Link from '../src/components/atoms/Link'
+import Quiz from '../src/components/atoms/Quiz'
+import QuizLogo from '../src/components/atoms/QuizLogo'
+import Widget from '../src/components/molecules/Widget'
+import Footer from '../src/components/molecules/Footer'
+import QuizForm from '../src/components/molecules/QuizForm'
+
+function mapExternalQuizesToListItems (linkExterno) {
+  const [, projectName, githubUser] = linkExterno.match(/\/\/(.*?)\.(.*?)\./)
+
+  return (
+    <li key={linkExterno}>
+      <Widget.Topic
+        as={Link}
+        href={`/quiz/${projectName}___${githubUser}`}
+      >
+        {`${githubUser}/${projectName}`}
+      </Widget.Topic>
+    </li>
+  )
+}
+
+export default function HomePage () {
   return (
     <Quiz.Background backgroundImage={db.bg}>
       <Head>
         <title>{db.title}</title>
       </Head>
       <Quiz.Container>
-        <Quiz.Logo />
+        <QuizLogo />
         <Widget>
           <Widget.Header>
             <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
             <p>{db.description}</p>
-            <Quiz.Form />
+            <QuizForm />
           </Widget.Content>
         </Widget>
 
@@ -28,7 +47,9 @@ export default function Home () {
           <Widget.Content>
             <h1>Quizes da Galera</h1>
 
-            <p>lorem ipsum dolor sit amet...</p>
+            <ul>
+              {db.external.map(mapExternalQuizesToListItems)}
+            </ul>
           </Widget.Content>
         </Widget>
         <Footer />

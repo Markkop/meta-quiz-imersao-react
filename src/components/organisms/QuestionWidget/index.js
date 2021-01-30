@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import Button from '../../atoms/Button'
-import Widget from '../../organisms/Widget'
+import Widget from '../../molecules/Widget'
 import AlternativesForm from '../../atoms/AlternativesForm'
 import { wait } from '../../../utils'
 

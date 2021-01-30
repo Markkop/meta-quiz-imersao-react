@@ -1,4 +1,4 @@
-import Widget from '../../organisms/Widget'
+import Widget from '../../molecules/Widget'
 
 function getNumberOfRightAnswers (results) {
   return results.filter(Boolean).length

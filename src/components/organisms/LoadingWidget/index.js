@@ -1,4 +1,4 @@
-import Widget from '../../organisms/Widget'
+import Widget from '../../molecules/Widget'
 
 function LoadingWidget () {
   return (

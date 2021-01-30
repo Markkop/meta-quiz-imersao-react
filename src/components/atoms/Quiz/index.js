@@ -1,11 +1,6 @@
 import styled from 'styled-components'
-import QuizForm from '../../molecules/QuizForm'
-import QuizLogo from '../../atoms/QuizLogo'
 
-const Quiz = {
-  Form: QuizForm,
-  Logo: QuizLogo
-}
+const Quiz = {}
 
 Quiz.Container = styled.div`
   width: 100%;
