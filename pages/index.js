@@ -1,6 +1,7 @@
 import React from 'react'
 import Head from 'next/head'
 import db from '../db.json'
+import { repository } from '../package.json'
 
 import GitHubCorner from '../src/components/atoms/GitHubCorner'
 import Link from '../src/components/atoms/Link'
@@ -54,7 +55,7 @@ export default function HomePage () {
         </Widget>
         <Footer />
       </Quiz.Container>
-      <GitHubCorner projectUrl="https://github.com/Markkop/meta-quiz-imersao-react" />
+      <GitHubCorner projectUrl={repository.url} />
     </Quiz.Background>
   )
 }
