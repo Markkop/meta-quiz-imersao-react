@@ -12,7 +12,7 @@ const screenStates = {
   RESULT: 'RESULT'
 }
 
-export default function QuizPage ({ db }) {
+export default function QuizPage ({ db, submittedAnswers }) {
   const [screenState, setScreenState] = useState(screenStates.LOADING)
   const [results, setResults] = useState([])
   const totalQuestions = db.questions.length
@@ -53,7 +53,12 @@ export default function QuizPage ({ db }) {
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
 
-        {screenState === screenStates.RESULT && <ResultsWidget results={results} />}
+        {screenState === screenStates.RESULT && (
+          <ResultsWidget
+            results={results}
+            submittedAnswers={submittedAnswers}
+          />
+        )}
       </Quiz.Container>
     </Quiz.Background>
   )
