@@ -25,13 +25,14 @@ export async function getRecords () {
 export async function createRecords (newRecords) {
   try {
     headers['Content-Type'] = 'application/json'
-    const data = { records: [newRecords] }
+    const data = { records: newRecords }
     const options = {
       method: 'POST',
       headers,
       body: JSON.stringify(data)
     }
 
+    console.log('Fetching POST with', options)
     const response = await fetch(tableEndpoint, options)
     if (!response.ok) {
       throw new Error(response.statusText)

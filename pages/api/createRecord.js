@@ -1,6 +1,6 @@
 import { createRecords } from '../../src/utils'
 
-export default function callCreateRecords (request, response) {
+export default async function callCreateRecords (request, response) {
   if (request.method === 'OPTIONS') {
     response.status(200).end()
     return
@@ -12,7 +12,8 @@ export default function callCreateRecords (request, response) {
 
   const { body } = request
   const records = JSON.parse(body)
-  createRecords(records)
+  console.log('Creating records', records)
+  await createRecords(records)
 
   response.json({ success: true })
 }
