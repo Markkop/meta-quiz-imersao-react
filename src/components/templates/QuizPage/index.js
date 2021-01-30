@@ -25,7 +25,7 @@ export default function QuizPage ({ db }) {
   }
 
   useEffect(() => {
-    wait(() => setScreenState(screenStates.QUIZ), 1000)
+    wait(() => setScreenState(screenStates.QUIZ), 3000)
   }, [])
 
   function handleQuizPagination () {
