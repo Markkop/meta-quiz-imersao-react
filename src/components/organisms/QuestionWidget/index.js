@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Button from '../../atoms/Button'
+import Cat from '../../atoms/Cat'
 import BackLinkArrow from '../../atoms/BackLinkArrow'
 import Widget from '../../molecules/Widget'
 import AlternativesForm from '../../atoms/AlternativesForm'
@@ -53,7 +54,14 @@ function AfterConfirmText ({ text, isCorrect }) {
   return <p>{text || (isCorrect ? rightAnswerText : wrongAnswerText) }</p>
 }
 
-function QuestionWidget ({ question, questionIndex, totalQuestions, addResult, handleQuizPagination }) {
+function QuestionWidget ({
+  question,
+  questionIndex,
+  totalQuestions,
+  addResult,
+  handleQuizPagination,
+  isHomeQuiz
+}) {
   const [selectedAlternative, setSelectedAlternative] = useState(undefined)
   const [isQuestionSubmited, setIsQuestionSubmited] = useState(false)
   const isCorrect = selectedAlternative === question.answer
@@ -73,6 +81,7 @@ function QuestionWidget ({ question, questionIndex, totalQuestions, addResult, h
 
   return (
     <Widget>
+      { questionIndex === 0 && isHomeQuiz && <Cat /> }
       <Widget.Header>
         <BackLinkArrow href="/" />
         <h3>

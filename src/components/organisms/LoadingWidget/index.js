@@ -1,5 +1,5 @@
 import Lottie from 'lottie-react'
-import sandClockTimerAnimation from '../../../../sand-clock-timer.json'
+import sandClockTimerAnimation from '../../../../assets/sand-clock-timer.json'
 
 function LoadingWidget () {
   return <Lottie animationData={JSON.parse(sandClockTimerAnimation)}/>

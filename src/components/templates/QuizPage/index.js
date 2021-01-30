@@ -57,7 +57,8 @@ export default function QuizPage ({ db, submittedAnswers }) {
           totalQuestions={totalQuestions}
           handleQuizPagination={handleQuizPagination}
           addResult={addResult}
-            />
+          isHomeQuiz={Boolean(submittedAnswers)}
+          />
         )}
 
         {screenState === screenStates.LOADING && <LoadingWidget />}
