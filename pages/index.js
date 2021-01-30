@@ -1,67 +1,26 @@
 import React from 'react'
-import styled from 'styled-components'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
-
 import db from '../db.json'
-import Widget from '../src/components/Widget'
-import QuizLogo from '../src/components/QuizLogo'
-import QuizBackground from '../src/components/QuizBackground'
-import Footer from '../src/components/Footer'
-import GitHubCorner from '../src/components/GitHubCorner'
-import Input from '../src/components/Input'
-import Button from '../src/components/Button'
-
-// const BackgroundImage = styled.div`
-//   background-image: url(${db.bg});
-//   flex: 1;
-//   background-size: cover;
-//   background-position: center;
-// `;
-
-const QuizContainer = styled.div`
-  width: 100%;
-  max-width: 350px;
-  padding-top: 45px;
-  margin: auto 10%;
-  @media screen and (max-width: 500px) {
-    margin: auto;
-    padding: 15px;
-  }
-`
+import GitHubCorner from '../src/components/molecules/GitHubCorner'
+import Widget from '../src/components/organisms/Widget'
+import Footer from '../src/components/organisms/Footer'
+import Quiz from '../src/components/organisms/Quiz'
 
 export default function Home () {
-  const router = useRouter()
-  const [name, setName] = React.useState('')
-
   return (
-    <QuizBackground backgroundImage={db.bg}>
+    <Quiz.Background backgroundImage={db.bg}>
       <Head>
         <title>{db.title}</title>
       </Head>
-      <QuizContainer>
-        <QuizLogo />
+      <Quiz.Container>
+        <Quiz.Logo />
         <Widget>
           <Widget.Header>
             <h1>{db.title}</h1>
           </Widget.Header>
           <Widget.Content>
             <p>{db.description}</p>
-            <form onSubmit={function (infosDoEvento) {
-              infosDoEvento.preventDefault()
-              router.push(`/quiz?name=${name}`)
-            }}
-            >
-              <Input
-                name="nomeDoUsuario"
-                onChange={(infosDoEvento) => setName(infosDoEvento.target.value)}
-                placeholder="Diz ai seu nome"
-                value={name}
-              />
-              <Button type="submit" disabled={name.length === 0}>
-                {`Jogar ${name}`}
-              </Button>
-            </form>
+            <Quiz.Form />
           </Widget.Content>
         </Widget>
 
@@ -73,8 +32,8 @@ export default function Home () {
           </Widget.Content>
         </Widget>
         <Footer />
-      </QuizContainer>
+      </Quiz.Container>
       <GitHubCorner projectUrl="https://github.com/Markkop/meta-quiz-imersao-react" />
-    </QuizBackground>
+    </Quiz.Background>
   )
 }

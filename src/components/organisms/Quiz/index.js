@@ -1,6 +1,24 @@
 import styled from 'styled-components'
+import QuizForm from '../../molecules/QuizForm'
+import QuizLogo from '../../atoms/QuizLogo'
 
-const QuizBackground = styled.div`
+const Quiz = {
+  Form: QuizForm,
+  Logo: QuizLogo
+}
+
+Quiz.Container = styled.div`
+  width: 100%;
+  max-width: 350px;
+  padding-top: 45px;
+  margin: auto 10%;
+  @media screen and (max-width: 500px) {
+    margin: auto;
+    padding: 15px;
+  }
+`
+
+Quiz.Background = styled.div`
   width: 100%;
   background-size: cover;
   background-image: url(${({ backgroundImage }) => backgroundImage});
@@ -11,7 +29,7 @@ const QuizBackground = styled.div`
     &:after {
       content: "";
       background-size: cover;
-    background-position: center;
+      background-position: center;
       background-image:
         linear-gradient(transparent, ${({ theme }) => theme.colors.mainBg}),
         url(${({ backgroundImage }) => backgroundImage});
@@ -31,4 +49,4 @@ const QuizBackground = styled.div`
   }
 `
 
-export default QuizBackground
+export default Quiz
