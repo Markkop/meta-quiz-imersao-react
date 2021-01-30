@@ -1,17 +1,8 @@
-import Widget from '../../molecules/Widget'
+import Lottie from 'lottie-react'
+import rocketLoadingkAnimation from '../../../../rocket-loading.json'
 
 function LoadingWidget () {
-  return (
-    <Widget>
-      <Widget.Header>
-        Carregando...
-      </Widget.Header>
-
-      <Widget.Content>
-        [Desafio do Loading]
-      </Widget.Content>
-    </Widget>
-  )
+  return <Lottie animationData={rocketLoadingkAnimation}/>
 }
 
 export default LoadingWidget
