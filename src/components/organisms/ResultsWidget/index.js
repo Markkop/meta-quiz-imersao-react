@@ -70,6 +70,7 @@ function ResultWidget ({ questions, results, submittedAnswers }) {
   const numberOfRightAnswers = getNumberOfRightAnswers(results)
   const questionWord = numberOfRightAnswers === 1 ? 'pergunta' : 'perguntas'
   const playerName = getPlayerName()
+  const resultTextSuffix = playerName ? `, ${playerName}` : ''
   const playerScore = sumScoreFromPlayerResult(results)
   const playerRecord = { Name: playerName, Score: playerScore }
   if (submittedAnswers) {
@@ -80,7 +81,7 @@ function ResultWidget ({ questions, results, submittedAnswers }) {
       <Widget>
         <Widget.Header>
           <BackLinkArrow href="/" />
-          {`Aqui estão seus resultados, ${playerName}`}
+          {`Aqui estão seus resultados${resultTextSuffix}`}
         </Widget.Header>
 
         <Widget.Content>
