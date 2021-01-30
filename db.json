@@ -4,28 +4,69 @@
   "description": "Vamos ver se você prestou mesmo atenção na Imersão React v2",
   "questions": [
     {
-      "image": "https://media.giphy.com/media/VbnUQpnihPSIgIXuZv/giphy.gif",
+      "image": "https://media.tenor.com/images/7fb25f60cdc874093312215dc60265b6/tenor.gif",
       "title": "Qual a cor do gato da Juliana?",
-      "description": "Aquele que fez desfile durante a aula 1",
+      "description": "Um excelente aquecedor de mãos",
       "answer": 1,
       "alternatives": [
         "Marrom",
         "Preto e branco",
         "Cinza",
         "Ele nunca apareceu na Imersão"
-      ]
+      ],
+      "afterConfirmText": "Tão fofo <3"
     },
     {
-      "image": "https://media.giphy.com/media/443pAv9m6Ti8KiCoAi/giphy.gif",
-      "title": "O que aconteceu quando o Mario pediu o \"Zoom mágico da edição\" na Aula 2?",
-      "description": "O importante é ter uma equipe técnica sempre atenta",
+      "image": "https://media2.giphy.com/media/443pAv9m6Ti8KiCoAi/200w.webp?cid=ecf05e470u6fr86015akjmt13uaryiwnwyzvjpvthls1u3nq&rid=200w.webp",
+      "title": "O que acontece quando o Mario pede o \"zoom mágico da edição\"?",
+      "description": "Não é magia, é tecnologia! Ou quase isso...",
       "answer": 3,
       "alternatives": [
-         "Apareceu uma lupa na área destacada",
-         "A tela aproximou para o ponto indicado",
-         "O Paulo pediu para aumentar a fonte",
+         "Aparece uma lupa na área destacada",
+         "A tela aproxima para o ponto indicado",
+         "O Paulo pede para aumentar a fonte",
          "Nada"
-      ]
+      ],
+      "afterConfirmText": "É isso aí, editor. Você não é obrigado a fazer o trabalho do CTRL +!"
+    },
+    {
+      "image": "https://media1.giphy.com/media/2YgK5GmqHOnGNZhgYy/200w.webp?cid=ecf05e47g0096x2ueo5jwhygob9yn24xzk7mopgsswie8066&rid=200w.webp",
+      "title": "Qual o nome original do componente da página de Quiz?",
+      "description": "Quase foi pra produção assim",
+      "answer": 0,
+      "alternatives": [
+         "PudimComBatata",
+         "PureDeBatatas",
+         "OstentacaoBigodinho",
+         "QuizPage"
+      ],
+      "afterConfirmText": "Pelo menos sabemos que podemos dar o nome que quisermos pros componentes"
+    },
+    {
+      "image": "https://media.tenor.com/images/89434791beb342b1532db7c3ca1ed8d2/tenor.gif",
+      "title": "Qual fenômeno metereologico se fez presente na imersão?",
+      "description": "A experiência é completa",
+      "answer": 1,
+      "alternatives": [
+         "Chuva",
+         "Trovão",
+         "Neve",
+         "Ciclone"
+      ],
+      "afterConfirmText": "Rápido, Ju! Tira tudo da tomada!"
+    },
+    {
+      "image": "https://media.tenor.com/images/99eeb8ebef75bc4b3ec9d9171c89a36a/tenor.gif",
+      "title": "Qual foi o/a instrutor(a) que não falou mutado?",
+      "description": "Quem nunca",
+      "answer": 1,
+      "alternatives": [
+         "Paulo",
+         "Mario",
+         "Juliana",
+         "Nenhum, todos pagaram mico"
+      ],
+      "afterConfirmText": "Na verdade só vimos o que apareceu pós-edição, hein."
     }
   ],
   "external": [

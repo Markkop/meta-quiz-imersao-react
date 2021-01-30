@@ -39,6 +39,12 @@ function Alternative ({
   )
 }
 
+function AfterConfirmText ({ text, isCorrect }) {
+  const rightAnswerText = 'Boa! Você acertou!'
+  const wrongAnswerText = 'Putz, você errou!'
+  return <p>{text || (isCorrect ? rightAnswerText : wrongAnswerText) }</p>
+}
+
 function QuestionWidget ({ question, questionIndex, totalQuestions, addResult, handleQuizPagination }) {
   const [selectedAlternative, setSelectedAlternative] = useState(undefined)
   const [isQuestionSubmited, setIsQuestionSubmited] = useState(false)
@@ -98,8 +104,7 @@ function QuestionWidget ({ question, questionIndex, totalQuestions, addResult, h
           <Button type="submit" disabled={!hasAlternativeSelected}>
             Confirmar
           </Button>
-          {isQuestionSubmited && isCorrect && <p>Você acertou!</p>}
-          {isQuestionSubmited && !isCorrect && <p>Você errou!</p>}
+          {isQuestionSubmited && <AfterConfirmText text={question.afterConfirmText} isCorrect={isCorrect} />}
         </AlternativesForm>
       </Widget.Content>
     </Widget>
