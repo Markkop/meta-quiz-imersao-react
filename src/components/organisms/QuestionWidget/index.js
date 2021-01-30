@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Button from '../../atoms/Button'
+import BackLinkArrow from '../../atoms/BackLinkArrow'
 import Widget from '../../molecules/Widget'
 import AlternativesForm from '../../atoms/AlternativesForm'
 import { wait } from '../../../utils'
@@ -59,7 +60,7 @@ function QuestionWidget ({ question, questionIndex, totalQuestions, addResult, h
   return (
     <Widget>
       <Widget.Header>
-        {/* <BackLinkArrow href="/" /> */}
+        <BackLinkArrow href="/" />
         <h3>
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>

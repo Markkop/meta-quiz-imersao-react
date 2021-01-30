@@ -1,4 +1,5 @@
 import Widget from '../../molecules/Widget'
+import BackLinkArrow from '../../atoms/BackLinkArrow'
 
 function getNumberOfRightAnswers (results) {
   return results.filter(Boolean).length
@@ -20,6 +21,7 @@ function ResultWidget ({ results }) {
   return (
     <Widget>
       <Widget.Header>
+        <BackLinkArrow href="/" />
         Resultados:
       </Widget.Header>
 
