@@ -1,6 +1,18 @@
 import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
-const Widget = styled.div`
+const Widget = styled(motion.div).attrs(() => ({
+  transition: {
+    delay: 0,
+    duration: 1
+  },
+  variants: {
+    show: { opacity: 1, y: '0' },
+    hidden: { opacity: 0, y: '100%' }
+  },
+  initial: 'hidden',
+  animate: 'show'
+}))`
   margin-top: 24px;
   margin-bottom: 24px;
   border: 1px solid ${({ theme }) => theme.colors.primary};

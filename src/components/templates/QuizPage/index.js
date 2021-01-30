@@ -8,7 +8,7 @@ import ResultsWidget from '../../organisms/ResultsWidget'
 
 const screenStates = {
   QUIZ: 'QUIZ',
-  LOADING: 'LOADINQuiz.Form G',
+  LOADING: 'LOADING',
   RESULT: 'RESULT'
 }
 

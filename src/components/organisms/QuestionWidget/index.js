@@ -4,6 +4,7 @@ import BackLinkArrow from '../../atoms/BackLinkArrow'
 import Widget from '../../molecules/Widget'
 import AlternativesForm from '../../atoms/AlternativesForm'
 import { wait } from '../../../utils'
+import { motion } from 'framer-motion'
 
 function Alternative ({
   alternative,
@@ -18,23 +19,27 @@ function Alternative ({
   const alternativeId = `alternative__${alternativeIndex}`
   const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR'
   const isSelected = selectedAlternative === alternativeIndex
-  const isCorrectAlternative = alternativeIndex === anwerIndex
+  const isCorrectAlternative = isQuestionSubmited && alternativeIndex === anwerIndex
   const questionId = `question__${questionIndex}`
-
   return (
     <Widget.Topic
-      as="label"
+      as={motion.label}
+      whileHover={!isQuestionSubmited && !isSelected && { scale: 1.1 }}
+      scale={isSelected ? 1.1 : 1}
+      animate={isCorrectAlternative && { scale: [1.2, 1, 1.2, 1] }}
       key={alternativeId}
       htmlFor={alternativeId}
       data-selected={isSelected}
       data-status={isQuestionSubmited && alternativeStatus}
-      data-correct-answer={isQuestionSubmited && isCorrectAlternative}
+      data-correct-answer={isCorrectAlternative}
         >
       <input
         style={{ display: 'none' }}
         id={alternativeId}
         name={questionId}
+        checked={isSelected}
         onChange={() => setSelectedAlternative(alternativeIndex)}
+        disabled={isQuestionSubmited}
         type="radio"
         />
       {alternative}
@@ -59,9 +64,9 @@ function QuestionWidget ({ question, questionIndex, totalQuestions, addResult, h
     event.preventDefault()
     setIsQuestionSubmited(true)
     wait(() => {
-      addResult(isCorrect)
       setIsQuestionSubmited(false)
       setSelectedAlternative(undefined)
+      addResult(isCorrect)
       handleQuizPagination()
     }, 3000)
   }
