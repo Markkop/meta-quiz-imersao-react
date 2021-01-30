@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { wait } from '../../../utils'
 import QuizLogo from '../../atoms/QuizLogo'
 import Quiz from '../../atoms/Quiz'
@@ -11,11 +12,18 @@ const screenStates = {
   LOADING: 'LOADING',
   RESULT: 'RESULT'
 }
+function hasDebugParam () {
+  const router = useRouter()
+  return router.query.debug
+}
 
 export default function QuizPage ({ db, submittedAnswers }) {
   const [screenState, setScreenState] = useState(screenStates.LOADING)
   const [results, setResults] = useState([])
   const questions = db.questions
+  if (hasDebugParam()) {
+    questions.length = 1
+  }
   const totalQuestions = questions.length
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const questionIndex = currentQuestion
