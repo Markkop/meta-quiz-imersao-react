@@ -1,5 +1,6 @@
 import Widget from '../../molecules/Widget'
 import BackLinkArrow from '../../atoms/BackLinkArrow'
+import ResultListItem from '../../atoms/ResultListItem'
 import { useRouter } from 'next/router'
 import { saveRecord } from '../../../utils'
 
@@ -12,13 +13,16 @@ function getNumberOfRightAnswers (results) {
   return results.filter(Boolean).length
 }
 
-function DetailedResult ({ result, index }) {
+function DetailedResult ({ questions, result, index }) {
+  const question = questions[index]
   const questionNumber = index + 1
-  const resultText = result ? 'Acertou' : 'Errou'
+  const questionTitle = question.title
   return (
-    <li>
-      {`# ${questionNumber} Resultado: ${resultText}`}
-    </li>
+    <ResultListItem
+      data-result={result}
+    >
+      {`# ${questionNumber} ${questionTitle}`}
+    </ResultListItem>
   )
 }
 
@@ -31,12 +35,12 @@ function sumScoreFromPlayerResult (playerResult) {
 
 function mapSubmittedResultsToListItems ({ Name, Score, isLocalPlayer }, index) {
   return (
-    <li
+    <ResultListItem
       data-local-player={isLocalPlayer}
       key={index}
     >
       {`${Name}: ${Score}`}
-    </li>
+    </ResultListItem>
   )
 }
 
@@ -45,6 +49,8 @@ function ScoreBoard ({ playerRecord, submittedAnswers }) {
     ...playerRecord,
     isLocalPlayer: true
   })
+
+  submittedAnswers = submittedAnswers.sort((a, b) => b.Score > a.Score)
 
   return (
     <Widget>
@@ -60,7 +66,7 @@ function ScoreBoard ({ playerRecord, submittedAnswers }) {
   )
 }
 
-function ResultWidget ({ results, submittedAnswers }) {
+function ResultWidget ({ questions, results, submittedAnswers }) {
   const numberOfRightAnswers = getNumberOfRightAnswers(results)
   const questionWord = numberOfRightAnswers === 1 ? 'pergunta' : 'perguntas'
   const playerName = getPlayerName()
@@ -74,7 +80,7 @@ function ResultWidget ({ results, submittedAnswers }) {
       <Widget>
         <Widget.Header>
           <BackLinkArrow href="/" />
-          {`Aqui estão seus resultados, ${playerName}:`}
+          {`Aqui estão seus resultados, ${playerName}`}
         </Widget.Header>
 
         <Widget.Content>
@@ -84,6 +90,7 @@ function ResultWidget ({ results, submittedAnswers }) {
           <ul>
             {results.map((result, index) =>
               <DetailedResult
+                questions={questions}
                 result={result}
                 index={index}
                 key={index}

@@ -15,10 +15,11 @@ const screenStates = {
 export default function QuizPage ({ db, submittedAnswers }) {
   const [screenState, setScreenState] = useState(screenStates.LOADING)
   const [results, setResults] = useState([])
-  const totalQuestions = db.questions.length
+  const questions = db.questions
+  const totalQuestions = questions.length
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const questionIndex = currentQuestion
-  const question = db.questions[questionIndex]
+  const question = questions[questionIndex]
 
   function addResult (result) {
     setResults([...results, result])
@@ -55,6 +56,7 @@ export default function QuizPage ({ db, submittedAnswers }) {
 
         {screenState === screenStates.RESULT && (
           <ResultsWidget
+            questions={questions}
             results={results}
             submittedAnswers={submittedAnswers}
           />
