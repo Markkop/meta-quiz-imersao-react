@@ -31,7 +31,9 @@ export async function createRecords (newRecords) {
       headers,
       body: JSON.stringify(data)
     }
+
     const response = await fetch(tableEndpoint, options)
+    console.log('Post Response', response)
     const { records } = await response.json()
     return records
   } catch (error) {
