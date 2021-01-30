@@ -11,7 +11,7 @@ export default function HomeQuiz ({ submittedAnswers }) {
 
 export async function getServerSideProps (context) {
   const records = await getRecords()
-  const submittedAnswers = records.map(record => record.fields)
+  const submittedAnswers = records && records.map(record => record.fields)
   return {
     props: {
       submittedAnswers
