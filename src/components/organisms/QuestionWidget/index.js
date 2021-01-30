@@ -12,11 +12,13 @@ function Alternative ({
   selectedAlternative,
   questionIndex,
   isQuestionSubmited,
-  setSelectedAlternative
+  setSelectedAlternative,
+  anwerIndex
 }) {
   const alternativeId = `alternative__${alternativeIndex}`
   const alternativeStatus = isCorrect ? 'SUCCESS' : 'ERROR'
   const isSelected = selectedAlternative === alternativeIndex
+  const isCorrectAlternative = alternativeIndex === anwerIndex
   const questionId = `question__${questionIndex}`
 
   return (
@@ -26,6 +28,7 @@ function Alternative ({
       htmlFor={alternativeId}
       data-selected={isSelected}
       data-status={isQuestionSubmited && alternativeStatus}
+      data-correct-answer={isQuestionSubmited && isCorrectAlternative}
         >
       <input
         style={{ display: 'none' }}
@@ -99,6 +102,7 @@ function QuestionWidget ({ question, questionIndex, totalQuestions, addResult, h
               questionIndex={questionIndex}
               isQuestionSubmited={isQuestionSubmited}
               setSelectedAlternative={setSelectedAlternative}
+              anwerIndex={question.answer}
               key={alternativeIndex}
             />)}
           <Button type="submit" disabled={!hasAlternativeSelected}>
