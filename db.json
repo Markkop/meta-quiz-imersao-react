@@ -1,7 +1,7 @@
 {
   "bg": "https://i.imgur.com/s12BQuF.jpg",
   "title": "Meta Quiz Imersão React",
-  "description": "Vamos ver se você prestou mesmo atenção na Imersão React v2",
+  "description": "Um Quiz sobre a Imersão React feito na Imersão React! É mole?",
   "questions": [
     {
       "image": "https://media.tenor.com/images/7fb25f60cdc874093312215dc60265b6/tenor.gif",

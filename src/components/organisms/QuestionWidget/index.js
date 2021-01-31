@@ -66,6 +66,7 @@ function QuestionWidget ({
   const [isQuestionSubmited, setIsQuestionSubmited] = useState(false)
   const isCorrect = selectedAlternative === question.answer
   const hasAlternativeSelected = selectedAlternative !== undefined
+  const isLastQuestion = questionIndex + 1 === totalQuestions
   const { image, title, description, alternatives } = question
   const barPercentage = ((questionIndex + 1) / totalQuestions) * 100
 
@@ -127,7 +128,7 @@ function QuestionWidget ({
           {
             isQuestionSubmited
               ? <Button type="button" onClick={handleNextQuestionClick}>
-                Próxima pergunta
+                {isLastQuestion ? 'Finalizar' : 'Próxima pergunta'}
               </Button>
               : <Button type="submit" disabled={!hasAlternativeSelected}>
                 Confirmar
