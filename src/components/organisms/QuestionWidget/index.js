@@ -68,7 +68,8 @@ function QuestionWidget ({
   const hasAlternativeSelected = selectedAlternative !== undefined
   const isLastQuestion = questionIndex + 1 === totalQuestions
   const { image, title, description, alternatives } = question
-  const barPercentage = ((questionIndex + 1) / totalQuestions) * 100
+  const quizCurrentProgress = isQuestionSubmited ? questionIndex + 1 : questionIndex
+  const quizPercentage = ((quizCurrentProgress) / totalQuestions) * 100
 
   function handleAlternativeSubmit (event) {
     event.preventDefault()
@@ -95,7 +96,7 @@ function QuestionWidget ({
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
       </Widget.Header>
-      <ProgressBar barPercentage={barPercentage} />
+      <ProgressBar barPercentage={quizPercentage} />
 
       <img
         alt="Descrição"
