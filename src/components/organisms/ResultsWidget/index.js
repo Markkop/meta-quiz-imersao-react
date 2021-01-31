@@ -1,6 +1,6 @@
 import Widget from '../../molecules/Widget'
 import BackLinkArrow from '../../atoms/BackLinkArrow'
-import ResultListItem from '../../atoms/ResultListItem'
+import DetailedResult from '../../molecules/DetailedResult'
 import ScoreBoard from '../../molecules/ScoreBoard'
 import { useRouter } from 'next/router'
 import { saveRecord } from '../../../utils'
@@ -12,32 +12,6 @@ function getPlayerName () {
 
 function getNumberOfRightAnswers (results) {
   return results.filter(result => result.isCorrect).length
-}
-
-function DetailedResult ({ questions, result, index }) {
-  const question = questions[index]
-  const questionNumber = index + 1
-  const questionTitle = question.title
-  const alternatives = question.alternatives
-  return (
-    <ResultListItem
-      data-result={result.isCorrect}
-    >
-      <p>
-        <strong>
-          {`${questionNumber}) ${questionTitle}`}
-        </strong>
-      </p>
-      <p>
-        {`Você respondeu: ${alternatives[result.selectedAlternative]}`}
-      </p>
-      {!result.isCorrect && <p>
-        {`O certo era: ${question.alternatives[question.answer]}`}
-
-      </p>
-      }
-    </ResultListItem>
-  )
 }
 
 function sumScoreFromPlayerResult (playerResult) {
