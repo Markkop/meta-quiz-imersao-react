@@ -8,6 +8,7 @@ import Quiz from '../src/components/atoms/Quiz'
 import QuizLogo from '../src/components/atoms/QuizLogo'
 import Widget from '../src/components/molecules/Widget'
 import Footer from '../src/components/molecules/Footer'
+import CustomQuizUrlForm from '../src/components/molecules/CustomQuizUrlForm'
 import QuizForm from '../src/components/molecules/QuizForm'
 import { motion } from 'framer-motion'
 
@@ -61,6 +62,9 @@ export default function HomePage ({ enrichedExternal }) {
 
             <ul>
               {enrichedExternal.map(mapExternalQuizesToListItems)}
+              <Widget.Topic>
+                <CustomQuizUrlForm />
+              </Widget.Topic>
             </ul>
           </Widget.Content>
         </Widget>
