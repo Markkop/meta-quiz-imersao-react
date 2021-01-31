@@ -5,9 +5,12 @@
 [![https://img.shields.io/badge/made%20with-reactjs-blue](https://img.shields.io/badge/made%20with-reactjs-blue)](https://nextjs.org/)
 
 
-Este é um Quiz feito na [Imersão React v2](https://site.alura.com.br/imersao-react-next-js/) da Alura sobre a própria Imersão React v2. Um meta-quiz!  
+Este é um Quiz feito na [Imersão React v2](https://site.alura.com.br/imersao-react-next-js/) da Alura sobre a própria Imersão React v2.   
+Um meta-quiz!  
 
 ![mind blow gif](https://media3.giphy.com/media/26ufdipQqU2lhNA4g/giphy.gif)
+
+Confira o resultado https://meta-quiz-imersao-react.markkop.vercel.app/  
 
 ## Features
 
@@ -19,7 +22,10 @@ Todas as submissões do Quiz são salvas no [AirTable](https://airtable.com/) e 
 
 * **Debug Mode**:  
 Ao passar `&debug=true` como parâmetro na página de Quiz, apenas a primeira pergunta do `db` será utilizada.  
-Útil para testar a tela de resultados ;D 
+Útil para testar a tela de resultados ;D
+
+* **Progress Bar**:  
+Juntando Styled Components com Framer Motion deu pra fazer uma barra de progresso bem daora 8)  
 
 ## Bibliotecas Usadas
 
@@ -38,6 +44,10 @@ git clone https://github.com/Markkop/meta-quiz-imersao-react
 # Instale as dependências
 cd meta-quiz-imersao-react
 npm install
+
+# Copie e altere o .env
+cp .env.local.example .env.local
+code .env.local
 
 # Depois de codar rode
 npm run lint
