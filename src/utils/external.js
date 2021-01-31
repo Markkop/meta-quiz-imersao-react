@@ -1,10 +1,34 @@
 import { external } from '../../db.json'
 
+/**
+ * @typedef ExternalQuizIdentification
+ * @property {string} projectName
+ * @property {string} githubUser
+ */
+
+/**
+ * Gets the project name and github user from a quiz url
+ * @param {string} url
+ * @returns {ExternalQuizIdentification}
+ */
 export function getUserAndProjectNamesFromUrl (url) {
   const [, projectName, githubUser] = url.match(/\/\/(.*?)\.(.*?)\./)
   return { projectName, githubUser }
 }
 
+/**
+ * @typedef EnrichedExternalQuiz
+ * @property {string} projectName
+ * @property {string} githubUser
+ * @property {string} title
+ * @property {number} questionsNumber
+ * @property {string} backgroundImage
+ */
+
+/**
+ * Enrich external quiz list by getting more information from their db
+ * @returns { Promise<EnrichedExternalQuiz[]> }
+ */
 export async function enrichExternalQuizes () {
   const urls = external
   const enrichedExternal = []

@@ -3,6 +3,16 @@ const headers = {
   Authorization: `Bearer ${process.env.AIRTABLE_TOKEN}`
 }
 
+/**
+ * @typedef PlayerRecord
+ * @property {string} Name
+ * @property {number} Score
+ */
+
+/**
+ * Save the player record by requesting an internal endpoint
+ * @param {PlayerRecord} playerRecord
+ */
 export function saveRecord (playerRecord) {
   try {
     const record = JSON.stringify([{ fields: playerRecord }])
@@ -12,6 +22,10 @@ export function saveRecord (playerRecord) {
   }
 }
 
+/**
+ * Get records from all players
+ * @returns { Promise<PlayerRecord[]> }
+ */
 export async function getRecords () {
   try {
     const response = await fetch(tableEndpoint, { headers })
@@ -22,6 +36,11 @@ export async function getRecords () {
   }
 }
 
+/**
+ * Creates the player record by sending a POST to AirTable
+ * @param { PlayerRecord } newRecords
+ * @returns { Promise<PlayerRecord[]> }
+ */
 export async function createRecords (newRecords) {
   try {
     headers['Content-Type'] = 'application/json'
