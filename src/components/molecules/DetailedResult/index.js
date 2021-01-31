@@ -1,9 +1,4 @@
 import ResultListItem from '../../atoms/ResultListItem'
-import styled from 'styled-components'
-
-const Question = styled.p`
-    font-weight: bold;
-`
 
 export default function DetailedResult ({ questions, result, index }) {
   const question = questions[index]
@@ -14,9 +9,9 @@ export default function DetailedResult ({ questions, result, index }) {
     <ResultListItem
       data-result={result.isCorrect}
       >
-      <Question>
+      <p style={{ fontWeight: 'bold' }}>
         {`${questionNumber}) ${questionTitle}`}
-      </Question>
+      </p>
       <p>
         {`Você respondeu: ${alternatives[result.selectedAlternative]}`}
       </p>
