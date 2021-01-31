@@ -6,6 +6,7 @@ const ProgressBar = styled(motion.div).attrs(({ barPercentage }) => ({
     width: `${barPercentage}%`
   }
 }))`
+  opacity: 0.9;
   height: 6px;
   background-color: ${({ theme }) => theme.colors.widgetBg};
   `

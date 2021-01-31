@@ -5,7 +5,6 @@ import BackLinkArrow from '../../atoms/BackLinkArrow'
 import Widget from '../../molecules/Widget'
 import ProgressBar from '../../molecules/ProgressBar'
 import AlternativesForm from '../../atoms/AlternativesForm'
-import { wait } from '../../../utils'
 import { motion } from 'framer-motion'
 
 function Alternative ({
@@ -73,12 +72,14 @@ function QuestionWidget ({
   function handleAlternativeSubmit (event) {
     event.preventDefault()
     setIsQuestionSubmited(true)
-    wait(() => {
-      setIsQuestionSubmited(false)
-      setSelectedAlternative(undefined)
-      addResult(isCorrect)
-      handleQuizPagination()
-    }, 3000)
+  }
+
+  function handleNextQuestionClick (event) {
+    event.preventDefault()
+    handleQuizPagination()
+    setIsQuestionSubmited(false)
+    setSelectedAlternative(undefined)
+    addResult(isCorrect)
   }
 
   return (
@@ -121,10 +122,17 @@ function QuestionWidget ({
               setSelectedAlternative={setSelectedAlternative}
               anwerIndex={question.answer}
               key={alternativeIndex}
-            />)}
-          <Button type="submit" disabled={!hasAlternativeSelected}>
-            Confirmar
-          </Button>
+            />
+          )}
+          {
+            isQuestionSubmited
+              ? <Button type="button" onClick={handleNextQuestionClick}>
+                Próxima pergunta
+              </Button>
+              : <Button type="submit" disabled={!hasAlternativeSelected}>
+                Confirmar
+              </Button>
+          }
           {isQuestionSubmited && <AfterConfirmText text={question.afterConfirmText} isCorrect={isCorrect} />}
         </AlternativesForm>
       </Widget.Content>
