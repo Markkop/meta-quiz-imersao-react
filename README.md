@@ -14,17 +14,17 @@ Confira o resultado https://meta-quiz-imersao-react.markkop.vercel.app/
 
 ## Features
 
-* **Atomic Design**:  
+* ⚛️ **Atomic Design**:  
 O projeto foi estruturado com [Atomic Design](https://bradfrost.com/blog/post/atomic-web-design/) para suas pastas e arquivos.
 
-* **Scoreboard**:  
+* 🏆 **Scoreboard**:  
 Todas as submissões do Quiz são salvas no [AirTable](https://airtable.com/) e retornadas no final do Quiz em um placar de pontuação!  
 
-* **Short Mode**:  
+* ⏩ **Short Mode**:  
 Ao passar `&short=true` como parâmetro na página de Quiz, apenas a primeira pergunta do `db` será utilizada.  
 Útil para testar a tela de resultados ;D
 
-* **Progress Bar**:  
+* 📏 **Progress Bar**:  
 Juntando Styled Components com Framer Motion deu pra fazer uma barra de progresso bem daora 8)  
 
 ## Bibliotecas Usadas
