@@ -3,6 +3,12 @@ import { ThemeProvider } from 'styled-components'
 import QuizPage from '../../src/components/templates/QuizPage'
 
 export default function QuizDaGaleraPage ({ db }) {
+  if (!db) {
+    return <h1 style={{ color: 'black' }} >
+      Ops, parece que esse projeto não exportou o seu quiz :(
+    </h1>
+  }
+
   return (
     <ThemeProvider theme={db.theme}>
       <QuizPage db={db} />
@@ -23,6 +29,9 @@ export async function getServerSideProps (context) {
       }
     }
   } catch (err) {
-    throw new Error(err)
+    console.log(err)
+    return {
+      props: {}
+    }
   }
 }
