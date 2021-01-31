@@ -3,6 +3,7 @@ import Button from '../../atoms/Button'
 import Cat from '../../atoms/Cat'
 import BackLinkArrow from '../../atoms/BackLinkArrow'
 import Widget from '../../molecules/Widget'
+import ProgressBar from '../../molecules/ProgressBar'
 import AlternativesForm from '../../atoms/AlternativesForm'
 import { wait } from '../../../utils'
 import { motion } from 'framer-motion'
@@ -67,6 +68,7 @@ function QuestionWidget ({
   const isCorrect = selectedAlternative === question.answer
   const hasAlternativeSelected = selectedAlternative !== undefined
   const { image, title, description, alternatives } = question
+  const barPercentage = ((questionIndex + 1) / totalQuestions) * 100
 
   function handleAlternativeSubmit (event) {
     event.preventDefault()
@@ -88,6 +90,7 @@ function QuestionWidget ({
           {`Pergunta ${questionIndex + 1} de ${totalQuestions}`}
         </h3>
       </Widget.Header>
+      <ProgressBar barPercentage={barPercentage} />
 
       <img
         alt="Descrição"
