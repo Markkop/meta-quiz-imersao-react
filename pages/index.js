@@ -1,8 +1,7 @@
-import React from 'react'
 import Head from 'next/head'
 import db from '../db.json'
 import { repository } from '../package.json'
-import { getExternalQuizes, getUserAndProjectNamesFromUrl } from '../src/utils'
+import { enrichExternalQuizes } from '../src/utils'
 import GitHubCorner from '../src/components/atoms/GitHubCorner'
 import Link from '../src/components/atoms/Link'
 import Quiz from '../src/components/atoms/Quiz'
@@ -73,27 +72,7 @@ export default function HomePage ({ enrichedExternal }) {
 }
 
 export async function getServerSideProps (context) {
-  const externalUrls = getExternalQuizes()
-  const enrichedExternal = []
-
-  for (let index = 0; index < externalUrls.length; index++) {
-    const url = externalUrls[index]
-    const { projectName, githubUser } = getUserAndProjectNamesFromUrl(url)
-    try {
-      const fetchResponse = await fetch(`https://${projectName}.${githubUser}.vercel.app/api/db`)
-      const { questions, bg, title } = await fetchResponse.json()
-      enrichedExternal.push({
-        projectName,
-        githubUser,
-        title,
-        questionsNumber: questions.length,
-        backgroundImage: bg
-      })
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+  const enrichedExternal = await enrichExternalQuizes()
   return {
     props: {
       enrichedExternal

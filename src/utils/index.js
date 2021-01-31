@@ -1,22 +1,13 @@
 import { getRecords, createRecords, saveRecord } from './records'
-import { external } from '../../db.json'
+import { getUserAndProjectNamesFromUrl, enrichExternalQuizes } from './external'
 
 function wait (callback, time) {
   setTimeout(callback, time)
 }
 
-function getExternalQuizes () {
-  return external
-}
-
-function getUserAndProjectNamesFromUrl (url) {
-  const [, projectName, githubUser] = url.match(/\/\/(.*?)\.(.*?)\./)
-  return { projectName, githubUser }
-}
-
 export {
   getUserAndProjectNamesFromUrl,
-  getExternalQuizes,
+  enrichExternalQuizes,
   createRecords,
   getRecords,
   saveRecord,
