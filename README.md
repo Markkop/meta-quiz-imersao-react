@@ -20,8 +20,8 @@ O projeto foi estruturado com [Atomic Design](https://bradfrost.com/blog/post/at
 * **Scoreboard**:  
 Todas as submissões do Quiz são salvas no [AirTable](https://airtable.com/) e retornadas no final do Quiz em um placar de pontuação!  
 
-* **Debug Mode**:  
-Ao passar `&debug=true` como parâmetro na página de Quiz, apenas a primeira pergunta do `db` será utilizada.  
+* **Short Mode**:  
+Ao passar `&short=true` como parâmetro na página de Quiz, apenas a primeira pergunta do `db` será utilizada.  
 Útil para testar a tela de resultados ;D
 
 * **Progress Bar**:  

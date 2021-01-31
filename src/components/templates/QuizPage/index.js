@@ -13,16 +13,16 @@ const screenStates = {
   RESULT: 'RESULT'
 }
 
-function hasDebugParam () {
+function hasShortModeParam () {
   const router = useRouter()
-  return router.query.debug
+  return router.query.short
 }
 
 export default function QuizPage ({ db, submittedAnswers }) {
   const [screenState, setScreenState] = useState(screenStates.LOADING)
   const [results, setResults] = useState([])
   const questions = db.questions
-  if (hasDebugParam()) {
+  if (hasShortModeParam()) {
     questions.length = 1
   }
   const totalQuestions = questions.length
