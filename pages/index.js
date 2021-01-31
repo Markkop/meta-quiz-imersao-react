@@ -7,8 +7,8 @@ import Quiz from '../src/components/atoms/Quiz'
 import QuizLogo from '../src/components/atoms/QuizLogo'
 import Widget from '../src/components/molecules/Widget'
 import Footer from '../src/components/molecules/Footer'
-import ExternalQuizItem from '../src/components/molecules/ExternalQuizItem'
 import QuizForm from '../src/components/molecules/QuizForm'
+import ExternalQuizesWidget from '../src/components/organisms/ExternalQuizesWidget'
 import MoreQuizesWidget from '../src/components/organisms/MoreQuizesWidget'
 
 export default function HomePage ({ enrichedExternal }) {
@@ -29,22 +29,7 @@ export default function HomePage ({ enrichedExternal }) {
           </Widget.Content>
         </Widget>
 
-        <Widget>
-          <Widget.Content>
-            <h1>Quizes da Galera</h1>
-            <p>
-              Jogue um quiz de outro DEV usando as funcionalidades deste projeto!
-            </p>
-            <ul>
-              {enrichedExternal.map(externalQuiz =>
-                <ExternalQuizItem
-                  externalQuiz={externalQuiz}
-                  key={externalQuiz.projectName}
-                />
-              )}
-            </ul>
-          </Widget.Content>
-        </Widget>
+        <ExternalQuizesWidget enrichedExternal={enrichedExternal}/>
         <MoreQuizesWidget />
         <Footer />
       </Quiz.Container>
