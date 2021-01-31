@@ -17,10 +17,12 @@ export default function CustomQuizUrlForm () {
   function handleSubmit (event) {
     event.preventDefault()
     const { projectName, githubUser } = getUserAndProjectNamesFromUrl(url)
-    if (!projectName || !githubUser) {
+
+    if (!projectName) {
       setErrorMessage('Url inválida. Ela está no formato <projeto>.<autor>.vercel.app ?')
       return
     }
+
     setErrorMessage('')
     router.push(`/quiz/${projectName}___${githubUser}`)
   }

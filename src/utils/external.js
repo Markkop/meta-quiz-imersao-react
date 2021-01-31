@@ -13,7 +13,7 @@ import { external } from '../../db.json'
  */
 export function getUserAndProjectNamesFromUrl (url) {
   try {
-    const [, projectName, githubUser] = url.match(/\/\/(.*?)\.(.*?)\.vercel/)
+    const [, projectName, githubUser] = url.match(/\/\/(.*?)\.(.*?)\./)
     return { projectName, githubUser }
   } catch (error) {
     console.log(error)
