@@ -6,7 +6,7 @@
     {
       "image": "https://media.tenor.com/images/7fb25f60cdc874093312215dc60265b6/tenor.gif",
       "title": "Qual a cor do gato da Juliana?",
-      "description": "A internet está cheia deles, aqui não seria diferente",
+      "description": "Aquele que ficou balançando o rabo na frente da câmera",
       "answer": 1,
       "alternatives": [
         "Marrom",
@@ -58,7 +58,7 @@
     {
       "image": "https://media.tenor.com/images/99eeb8ebef75bc4b3ec9d9171c89a36a/tenor.gif",
       "title": "Qual foi o/a instrutor(a) que não falou mutado?",
-      "description": "Quem nunca",
+      "description": "Quem nunca, não é mesmo?",
       "answer": 1,
       "alternatives": [
          "Paulo",
@@ -66,7 +66,7 @@
          "Juliana",
          "Nenhum, todos pagaram mico"
       ],
-      "afterConfirmText": "Na verdade só vimos o que apareceu pós-edição, hein."
+      "afterConfirmText": "Isso que só vimos o que foi pra pós-edição"
     }
   ],
   "external": [
