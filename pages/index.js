@@ -3,40 +3,13 @@ import db from '../db.json'
 import { repository } from '../package.json'
 import { enrichExternalQuizes } from '../src/utils'
 import GitHubCorner from '../src/components/atoms/GitHubCorner'
-import Link from '../src/components/atoms/Link'
 import Quiz from '../src/components/atoms/Quiz'
 import QuizLogo from '../src/components/atoms/QuizLogo'
 import Widget from '../src/components/molecules/Widget'
 import Footer from '../src/components/molecules/Footer'
+import ExternalQuizItem from '../src/components/molecules/ExternalQuizItem'
 import CustomQuizUrlForm from '../src/components/molecules/CustomQuizUrlForm'
 import QuizForm from '../src/components/molecules/QuizForm'
-import { motion } from 'framer-motion'
-
-function mapExternalQuizesToListItems (externalProject) {
-  const { projectName, githubUser, questionsNumber, backgroundImage, title } = externalProject
-  return (
-    <motion.li
-      key={projectName}
-      whileHover={{ scale: 1.1 }}
-    >
-      <Widget.Topic
-        as={Link}
-        href={`/quiz/${projectName}___${githubUser}`}
-        style={{
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundImage: `url(${backgroundImage})`
-        }}
-        >
-        {`${title}`}
-        <Widget.SubTopic>
-          {`by ${githubUser} / ${questionsNumber} perguntas`}
-        </Widget.SubTopic>
-      </Widget.Topic>
-
-    </motion.li >
-  )
-}
 
 export default function HomePage ({ enrichedExternal }) {
   return (
@@ -61,7 +34,12 @@ export default function HomePage ({ enrichedExternal }) {
             <h1>Quizes da Galera</h1>
 
             <ul>
-              {enrichedExternal.map(mapExternalQuizesToListItems)}
+              {enrichedExternal.map(externalQuiz =>
+                <ExternalQuizItem
+                  externalQuiz={externalQuiz}
+                  key={externalQuiz.projectName}
+                />
+              )}
               <Widget.Topic>
                 <CustomQuizUrlForm />
               </Widget.Topic>
