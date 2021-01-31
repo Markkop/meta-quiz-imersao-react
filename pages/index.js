@@ -10,11 +10,15 @@ import QuizLogo from '../src/components/atoms/QuizLogo'
 import Widget from '../src/components/molecules/Widget'
 import Footer from '../src/components/molecules/Footer'
 import QuizForm from '../src/components/molecules/QuizForm'
+import { motion } from 'framer-motion'
 
 function mapExternalQuizesToListItems (externalProject) {
   const { projectName, githubUser, questionsNumber, backgroundImage, title } = externalProject
   return (
-    <li key={projectName}>
+    <motion.li
+      key={projectName}
+      whileHover={{ scale: 1.1 }}
+    >
       <Widget.Topic
         as={Link}
         href={`/quiz/${projectName}___${githubUser}`}
@@ -23,13 +27,14 @@ function mapExternalQuizesToListItems (externalProject) {
           backgroundPosition: 'center',
           backgroundImage: `url(${backgroundImage})`
         }}
-      >
+        >
         {`${title}`}
         <Widget.SubTopic>
           {`by ${githubUser} / ${questionsNumber} perguntas`}
         </Widget.SubTopic>
       </Widget.Topic>
-    </li>
+
+    </motion.li >
   )
 }
 
