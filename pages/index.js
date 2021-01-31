@@ -79,15 +79,19 @@ export async function getServerSideProps (context) {
   for (let index = 0; index < externalUrls.length; index++) {
     const url = externalUrls[index]
     const { projectName, githubUser } = getUserAndProjectNamesFromUrl(url)
-    const fetchResponse = await fetch(`https://${projectName}.${githubUser}.vercel.app/api/db`)
-    const { questions, bg, title } = await fetchResponse.json()
-    enrichedExternal.push({
-      projectName,
-      githubUser,
-      title,
-      questionsNumber: questions.length,
-      backgroundImage: bg
-    })
+    try {
+      const fetchResponse = await fetch(`https://${projectName}.${githubUser}.vercel.app/api/db`)
+      const { questions, bg, title } = await fetchResponse.json()
+      enrichedExternal.push({
+        projectName,
+        githubUser,
+        title,
+        questionsNumber: questions.length,
+        backgroundImage: bg
+      })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return {
