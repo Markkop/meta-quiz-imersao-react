@@ -12,9 +12,7 @@ const ResultListItem = styled.li`
     &[data-result="false"] {
         background-color: ${({ theme }) => `${theme.colors.wrong}90`};
     }
-    &[data-local-player="true"] {
-        background-color: ${({ theme }) => `${theme.colors.success}90`};
-    }
+
 `
 
 export default ResultListItem

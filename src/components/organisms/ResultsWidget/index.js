@@ -1,6 +1,7 @@
 import Widget from '../../molecules/Widget'
 import BackLinkArrow from '../../atoms/BackLinkArrow'
 import ResultListItem from '../../atoms/ResultListItem'
+import ScoreBoard from '../../molecules/ScoreBoard'
 import { useRouter } from 'next/router'
 import { saveRecord } from '../../../utils'
 
@@ -34,7 +35,7 @@ function DetailedResult ({ questions, result, index }) {
         {`O certo era: ${question.alternatives[question.answer]}`}
 
       </p>
-}
+      }
     </ResultListItem>
   )
 }
@@ -44,39 +45,6 @@ function sumScoreFromPlayerResult (playerResult) {
   return playerResult.reduce((score, result) => {
     return score + (result.isCorrect ? rightScoreValue : 0)
   }, 0)
-}
-
-function mapSubmittedResultsToListItems ({ Name, Score, isLocalPlayer }, index) {
-  return (
-    <ResultListItem
-      data-local-player={isLocalPlayer}
-      key={index}
-    >
-      {`${Name}: ${Score}`}
-    </ResultListItem>
-  )
-}
-
-function ScoreBoard ({ playerRecord, submittedAnswers }) {
-  submittedAnswers.push({
-    ...playerRecord,
-    isLocalPlayer: true
-  })
-
-  submittedAnswers = submittedAnswers.sort((a, b) => b.Score > a.Score)
-
-  return (
-    <Widget>
-      <Widget.Header>
-        Placar:
-      </Widget.Header>
-      <Widget.Content>
-        <ul>
-          {submittedAnswers.map(mapSubmittedResultsToListItems)}
-        </ul>
-      </Widget.Content>
-    </Widget>
-  )
 }
 
 function ResultWidget ({ questions, results, submittedAnswers }) {
