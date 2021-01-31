@@ -12,7 +12,6 @@ export default async function callCreateRecords (request, response) {
 
   const { body } = request
   const records = JSON.parse(body)
-  console.log('Creating records', records)
   await createRecords(records)
 
   response.json({ success: true })

@@ -2,7 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import db from '../db.json'
 import { repository } from '../package.json'
-
+import { getExternalQuizes, getUserAndProjectNamesFromUrl } from '../src/utils'
 import GitHubCorner from '../src/components/atoms/GitHubCorner'
 import Link from '../src/components/atoms/Link'
 import Quiz from '../src/components/atoms/Quiz'
@@ -11,22 +11,29 @@ import Widget from '../src/components/molecules/Widget'
 import Footer from '../src/components/molecules/Footer'
 import QuizForm from '../src/components/molecules/QuizForm'
 
-function mapExternalQuizesToListItems (linkExterno) {
-  const [, projectName, githubUser] = linkExterno.match(/\/\/(.*?)\.(.*?)\./)
-
+function mapExternalQuizesToListItems (externalProject) {
+  const { projectName, githubUser, questionsNumber, backgroundImage, title } = externalProject
   return (
-    <li key={linkExterno}>
+    <li key={projectName}>
       <Widget.Topic
         as={Link}
         href={`/quiz/${projectName}___${githubUser}`}
+        style={{
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundImage: `url(${backgroundImage})`
+        }}
       >
-        {`${githubUser}/${projectName}`}
+        {`${title}`}
+        <Widget.SubTopic>
+          {`by ${githubUser} / ${questionsNumber} perguntas`}
+        </Widget.SubTopic>
       </Widget.Topic>
     </li>
   )
 }
 
-export default function HomePage () {
+export default function HomePage ({ enrichedExternal }) {
   return (
     <Quiz.Background backgroundImage={db.bg}>
       <Head>
@@ -49,7 +56,7 @@ export default function HomePage () {
             <h1>Quizes da Galera</h1>
 
             <ul>
-              {db.external.map(mapExternalQuizesToListItems)}
+              {enrichedExternal.map(mapExternalQuizesToListItems)}
             </ul>
           </Widget.Content>
         </Widget>
@@ -58,4 +65,29 @@ export default function HomePage () {
       <GitHubCorner projectUrl={repository.url} />
     </Quiz.Background>
   )
+}
+
+export async function getServerSideProps (context) {
+  const externalUrls = getExternalQuizes()
+  const enrichedExternal = []
+
+  for (let index = 0; index < externalUrls.length; index++) {
+    const url = externalUrls[index]
+    const { projectName, githubUser } = getUserAndProjectNamesFromUrl(url)
+    const fetchResponse = await fetch(`https://${projectName}.${githubUser}.vercel.app/api/db`)
+    const { questions, bg, title } = await fetchResponse.json()
+    enrichedExternal.push({
+      projectName,
+      githubUser,
+      title,
+      questionsNumber: questions.length,
+      backgroundImage: bg
+    })
+  }
+
+  return {
+    props: {
+      enrichedExternal
+    }
+  }
 }

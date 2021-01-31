@@ -32,7 +32,6 @@ export async function createRecords (newRecords) {
       body: JSON.stringify(data)
     }
 
-    console.log('Fetching POST with', options)
     const response = await fetch(tableEndpoint, options)
     if (!response.ok) {
       throw new Error(response.statusText)

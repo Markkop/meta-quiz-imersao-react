@@ -72,7 +72,9 @@
   "external": [
     "https://gamequiz.brunoamaia.vercel.app/",
     "https://aluraquiz-wow.yuriramosc.vercel.app",
-    "https://crashquiz.wellingtonfreitas.vercel.app"
+    "https://crashquiz.wellingtonfreitas.vercel.app",
+    "https://flow-quiz.garubieru.vercel.app/",
+    "https://quiz-lpi.rmsaitam.vercel.app/"
   ],
   "theme": {
     "colors": {

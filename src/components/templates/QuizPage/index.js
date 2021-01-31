@@ -12,6 +12,7 @@ const screenStates = {
   LOADING: 'LOADING',
   RESULT: 'RESULT'
 }
+
 function hasDebugParam () {
   const router = useRouter()
   return router.query.debug

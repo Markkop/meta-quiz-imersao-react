@@ -59,6 +59,7 @@ Widget.Content = styled.div`
 `
 
 Widget.Topic = styled.a`
+  text-shadow: 0px 0px 10px black,0px 0px 10px black, 0px 0px 10px black; 
   outline: 0;
   text-decoration: none;
   color: ${({ theme }) => theme.colors.contrastText};
@@ -74,6 +75,11 @@ Widget.Topic = styled.a`
   &:focus {
     opacity: .5;
   }
+`
+
+Widget.SubTopic = styled.div`
+  font-size: 10px;
+  padding: 0px;
 `
 
 export default Widget
