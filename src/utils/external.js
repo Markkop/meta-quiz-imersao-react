@@ -12,8 +12,13 @@ import { external } from '../../db.json'
  * @returns {ExternalQuizIdentification}
  */
 export function getUserAndProjectNamesFromUrl (url) {
-  const [, projectName, githubUser] = url.match(/\/\/(.*?)\.(.*?)\./)
-  return { projectName, githubUser }
+  try {
+    const [, projectName, githubUser] = url.match(/\/\/(.*?)\.(.*?)\.vercel/)
+    return { projectName, githubUser }
+  } catch (error) {
+    console.log(error)
+    return {}
+  }
 }
 
 /**
