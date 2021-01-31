@@ -80,7 +80,10 @@ function QuestionWidget ({
     handleQuizPagination()
     setIsQuestionSubmited(false)
     setSelectedAlternative(undefined)
-    addResult(isCorrect)
+    addResult({
+      selectedAlternative,
+      isCorrect
+    })
   }
 
   return (

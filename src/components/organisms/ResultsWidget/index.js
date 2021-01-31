@@ -10,26 +10,39 @@ function getPlayerName () {
 }
 
 function getNumberOfRightAnswers (results) {
-  return results.filter(Boolean).length
+  return results.filter(result => result.isCorrect).length
 }
 
 function DetailedResult ({ questions, result, index }) {
   const question = questions[index]
   const questionNumber = index + 1
   const questionTitle = question.title
+  const alternatives = question.alternatives
   return (
     <ResultListItem
-      data-result={result}
+      data-result={result.isCorrect}
     >
-      {`# ${questionNumber} ${questionTitle}`}
+      <p>
+        <strong>
+          {`${questionNumber}) ${questionTitle}`}
+        </strong>
+      </p>
+      <p>
+        {`Você respondeu: ${alternatives[result.selectedAlternative]}`}
+      </p>
+      {!result.isCorrect && <p>
+        {`O certo era: ${question.alternatives[question.answer]}`}
+
+      </p>
+}
     </ResultListItem>
   )
 }
 
 function sumScoreFromPlayerResult (playerResult) {
   const rightScoreValue = 20
-  return playerResult.reduce((score, isCorrectAnswer) => {
-    return score + isCorrectAnswer ? rightScoreValue : 0
+  return playerResult.reduce((score, result) => {
+    return score + (result.isCorrect ? rightScoreValue : 0)
   }, 0)
 }
 
